@@ -28,12 +28,12 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers("/course/**", "/student/**", "/stadistics/**").authenticated()  // Estas rutas requieren autenticación
-                        .anyRequest().permitAll()  // Permite todas las demás rutas sin autenticación
+                        .requestMatchers("/course/**", "/student/**", "/stadistics/**").authenticated()
+                        .anyRequest().permitAll()
                 )
-                .httpBasic(Customizer.withDefaults())  // Autenticación básica
-                .csrf(csrf -> csrf.disable())  // Deshabilitar CSRF para API
-                .formLogin().disable();  // Deshabilitar formulario de login si es que lo usas
+                .httpBasic(Customizer.withDefaults())
+                .csrf(csrf -> csrf.disable())
+                .formLogin().disable();
 
         return http.build();
     }
@@ -57,13 +57,13 @@ public class SecurityConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.addAllowedOrigin("http://localhost:8081");  // Permitir tu frontend
-        corsConfig.addAllowedMethod("*");  // Permitir todos los métodos HTTP
-        corsConfig.addAllowedHeader("*");  // Permitir todos los encabezados
-        corsConfig.setAllowCredentials(true);  // Permitir el envío de cookies y cabeceras de autenticación
+        corsConfig.addAllowedOriginPattern("*");
+        corsConfig.addAllowedMethod("*");
+        corsConfig.addAllowedHeader("*");
+        corsConfig.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfig);  // Configuración global para todos los endpoints
+        source.registerCorsConfiguration("/**", corsConfig);
 
         return new CorsFilter(source);
     }
