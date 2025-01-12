@@ -1,5 +1,6 @@
 package com.example.testVulkan_Backend_SPRINGBOOT341.controller;
 
+import com.example.testVulkan_Backend_SPRINGBOOT341.model.Course;
 import com.example.testVulkan_Backend_SPRINGBOOT341.model.Student;
 import com.example.testVulkan_Backend_SPRINGBOOT341.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +35,10 @@ public class StudentController {
     public void deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
     }
+
+    @PutMapping("/{id}")
+    public Student updateStudent(@PathVariable Long id, @RequestBody Student updatedStudent) {
+        return studentService.updateStudent(id, updatedStudent);
+    }
+
 }
