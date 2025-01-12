@@ -1,6 +1,7 @@
 package com.example.testVulkan_Backend_SPRINGBOOT341.controller;
 
 import com.example.testVulkan_Backend_SPRINGBOOT341.model.Course;
+import com.example.testVulkan_Backend_SPRINGBOOT341.model.Student;
 import com.example.testVulkan_Backend_SPRINGBOOT341.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,6 @@ public class CourseController {
 
     @Autowired
     private CourseService courseService;
-
 
     @GetMapping
     public List<Course> getCourses() {
@@ -33,5 +33,15 @@ public class CourseController {
     @DeleteMapping("/{id}")
     public void deleteCourse(@PathVariable Long id) {
         courseService.deleteCourse(id);
+    }
+
+    @PutMapping("/{id}")
+    public Course updateCourse(@PathVariable Long id, @RequestBody Course updatedCourse) {
+        return courseService.updateCourse(id, updatedCourse);
+    }
+
+    @GetMapping("/{id}/students")
+    public List<Student> getStudentsByCourse(@PathVariable Long id) {
+        return courseService.getStudentsByCourse(id);
     }
 }
