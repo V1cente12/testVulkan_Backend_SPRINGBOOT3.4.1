@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### ignorar ###
+src/main/resources/application.properties
+
+*.log
