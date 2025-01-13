@@ -59,7 +59,7 @@ public class SecurityConfig {
         CorsConfiguration corsConfig = new CorsConfiguration();
         corsConfig.addAllowedOriginPattern("*");
 	corsConfig.addAllowedOriginPattern("http://localhost:8081");
-	corsConfig.addAllowedOriginPattern("https://testvulkanfrontend.v-code.site")
+	corsConfig.addAllowedOriginPattern("https://testvulkanfrontend.v-code.site");
         corsConfig.addAllowedMethod("*");
         corsConfig.addAllowedHeader("*");
         corsConfig.setAllowCredentials(true);
