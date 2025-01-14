@@ -57,9 +57,8 @@ public class SecurityConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.addAllowedOriginPattern("*");
-	corsConfig.addAllowedOriginPattern("http://localhost:8081");
-	corsConfig.addAllowedOriginPattern("https://testvulkanfrontend.v-code.site");
+        corsConfig.addAllowedOriginPattern("https://testvulkanfrontend.v-code.site");
+        corsConfig.addAllowedOriginPattern("http://localhost:8081");
         corsConfig.addAllowedMethod("*");
         corsConfig.addAllowedHeader("*");
         corsConfig.setAllowCredentials(true);
